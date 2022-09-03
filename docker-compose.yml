@@ -20,14 +20,11 @@ services:
       - 'traefik.http.routers.nightscout.entrypoints=web'
     environment:
       NODE_ENV: production
-      TZ: Europe/Moscow
+      timezone: Europe/Moscow
       INSECURE_USE_HTTP: 'true'
       MONGO_CONNECTION: mongodb://mongo:27017/nightscout
       API_SECRET: ${NS_SECRET}
-      ENABLE: basal iob cob boluscalc cage sage iage bage pump openaps pushover bgi food rawbg
       SHOW_FORECAST: openaps
-      PUMP_FIELDS: clock reservoir
-      DISPLAY_UNITS: mmol
       AUTH_DEFAULT_ROLES: readable
 
   traefik:
