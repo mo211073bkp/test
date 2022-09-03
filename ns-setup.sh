@@ -46,3 +46,6 @@ echo "secret: $secret"
 echo
 echo  "Адрес Вашего Nightscout"
 echo "domain: $domain"
+echo
+echo  "Строка для xDrip"
+echo "https://"secret: $secret""@""domain: $domain"".herokuapp.com/api/v1/"
