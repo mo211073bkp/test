@@ -33,6 +33,8 @@ echo Введите API secret key, 12 символов буквы и цифры
 read secret
 echo "NS_SECRET=$secret" >> .env
 
+apt install nano
+
 curl https://raw.githubusercontent.com/mo211073bkp/test/main/docker-compose.yml --output docker-compose.yml
 sudo docker-compose up -d
 
@@ -46,6 +48,3 @@ echo "secret: $secret"
 echo
 echo  "Адрес Вашего Nightscout"
 echo "domain: $domain"
-echo
-echo  "Строка для xDrip"
-echo "https://"secret: $secret""@""domain: $domain"".herokuapp.com/api/v1/"
