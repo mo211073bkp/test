@@ -24,7 +24,6 @@ services:
       INSECURE_USE_HTTP: 'true'
       MONGO_CONNECTION: mongodb://mongo:27017/nightscout
       API_SECRET: ${NS_SECRET}
-      SHOW_FORECAST: openaps
       AUTH_DEFAULT_ROLES: readable
 
   traefik:
