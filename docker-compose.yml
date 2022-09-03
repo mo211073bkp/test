@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo:4.4
+    restart: always
+    container_name: mongo
+    volumes:
+      - ${NS_MONGO_DATA_DIR:-./mongo-data}:/data/db:cached
+
+  nightscout:
+    image: nightscout/cgm-remote-monitor:latest
+    container_name: nightscout
+    restart: always
+    depends_on:
+      - mongo
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.nightscout.rule=Host(`${NS_DOMAIN}`)'
+      - 'traefik.http.routers.nightscout.entrypoints=web'
+    environment:
+      NODE_ENV: production
+      TZ: Europe/Moscow
+      INSECURE_USE_HTTP: 'true'
+      MONGO_CONNECTION: mongodb://mongo:27017/nightscout
+      API_SECRET: ${NS_SECRET}
+      ENABLE: basal iob cob boluscalc cage sage iage bage pump openaps pushover bgi food rawbg
+      SHOW_FORECAST: openaps
+      PUMP_FIELDS: clock reservoir
+      DISPLAY_UNITS: mmol
+      AUTH_DEFAULT_ROLES: denied
+
+  traefik:
+    image: traefik:latest
+    container_name: 'traefik'
+    restart: always
+    command:
+      - '--providers.docker=true'
+      - '--providers.docker.exposedbydefault=false'
+      - '--entrypoints.web.address=:80'
+    ports:
+      - '80:80'
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock:ro'
