@@ -28,7 +28,7 @@ services:
       SHOW_FORECAST: openaps
       PUMP_FIELDS: clock reservoir
       DISPLAY_UNITS: mmol
-      AUTH_DEFAULT_ROLES: denied
+      AUTH_DEFAULT_ROLES: readable
 
   traefik:
     image: traefik:latest
