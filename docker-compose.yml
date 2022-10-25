@@ -2,7 +2,7 @@ version: '3'
 
 services:
   mongo:
-    image: mongo:4.4
+    image: mongo:6.0
     restart: always
     container_name: mongo
     volumes:
@@ -20,45 +20,10 @@ services:
       - 'traefik.http.routers.nightscout.entrypoints=web'
     environment:
       NODE_ENV: production
-      timezone: Europe/Moscow
       INSECURE_USE_HTTP: 'true'
-      MONGO_CONNECTION: mongodb://mongo:27017/nightscout
-      API_SECRET: ${NS_SECRET}
-      AUTH_DEFAULT_ROLES: readable
-      ##
-      CUSTOM_TITLE: User_CGM
-      THEME: colors
-      TIME_FORMAT: 24
-      SCALE_Y: linear
-      LANGUAGE: ru
-      SHOW_FORECAST: openaps
-      BASAL_RENDER: default
-      BOLUS_RENDER_OVER: 0
-      BOLUS_RENDER_FORMAT_SMALL: default
-      DEVICESTATUS_ADVANCED: true
-      DISPLAY_UNITS: mmol
-      SHOW_RAWBG: never
-      EDIT_MODE: on
-      BG_HIGH: 10
-      BG_TARGET_TOP: 7
-      BG_TARGET_BOTTOM: 4.5
-      BG_LOW: 4
-      OPENAPS_COLOR_PREDICTION_LINES: true
-      OPENAPS_FIELDS: status-symbol status-label iob meal-assist rssi
-      PUMP_ENABLE_ALERTS: true
-      PUMP_WARN_BATT_P: 30
-      PUMP_URGENT_BATT_P: 10
-      PUMP_FIELDS: reservoir battery clock status
-      SAGE_ENABLE_ALERTS: true
-      SAGE_INFO: 240
-      SAGE_WARN: 312
-      SAGE_URGENT: 324
-      SHOW_PLUGINS: careportal rawbg iob maker bridge cob bwp cage basal treatmentnotify basal visualization on the graph pushover temp basal visualization exercise entry visualization new scaling options reports admin tools minimed connect and nightscout
-      ENABLE: careportal boluscalc food bwp cage sage iage iob cob basal ar2 rawbg pushover bgi pump openaps alice
-      XDRIPJS_ENABLE_ALERTS: true
-      XDRIPJS_STATE_NOTIFY_INTRVL: 0.5
-      XDRIPJS_WARN_BAT_V: 300
-      ##
+      MONGO_CONNECTION: mongodb://mongo:27017/ns
+      API_SECRET: qwertyuiopas
+      
   traefik:
     image: traefik:latest
     container_name: 'traefik'
