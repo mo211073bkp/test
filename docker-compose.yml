@@ -20,7 +20,7 @@ services:
       - 'traefik.http.routers.nightscout.entrypoints=web'
     environment:
       NODE_ENV: production
-      INSECURE_USE_HTTP: 'false'
+      INSECURE_USE_HTTP: 'true'
       MONGO_CONNECTION: mongodb://mongo:27017/ns
       API_SECRET: qwertyuiopas
       
