@@ -35,6 +35,13 @@ read domain
 echo "NS_DOMAIN=$domain" >> .env
 echo
 
+echo
+echo "Enter you email (the one SSL certificate will be generated for):"
+echo "Введите ваш email (на него будет зарегистрирован SSL-сертификат):"
+read email
+echo "NS_EMAIL=$email" >> .env
+echo
+
 curl https://raw.githubusercontent.com/mo211073bkp/test/main/docker-compose.yml --output docker-compose.yml
 sudo docker-compose up -d
 
