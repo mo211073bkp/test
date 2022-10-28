@@ -19,7 +19,7 @@ services:
       - 'traefik.http.routers.nightscout.rule=Host(`${NS_DOMAIN}`)'
       - 'traefik.http.routers.nightscout.entrypoints=web'
       ##Можно забиндить для jino
-      - 'traefik.http.routers.nightscout.tls.certresolver=le'
+      #- 'traefik.http.routers.nightscout.tls.certresolver=le'
     environment:
       NODE_ENV: production
       INSECURE_USE_HTTP: 'true'
@@ -38,13 +38,13 @@ services:
       - '--entrypoints.web.http.redirections.entrypoint.to=websecure'
       - '--entrypoints.websecure.address=:443'
       ##Можно забиндить для Jino
-      - "--certificatesresolvers.le.acme.httpchallenge=true"
-      - "--certificatesresolvers.le.acme.httpchallenge.entrypoint=web"
-      - '--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json'
-      - '--certificatesresolvers.le.acme.email=${NS_EMAIL}'
+      #- "--certificatesresolvers.le.acme.httpchallenge=true"
+      #- "--certificatesresolvers.le.acme.httpchallenge.entrypoint=web"
+      #- '--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json'
+      #- '--certificatesresolvers.le.acme.email=${NS_EMAIL}'
     ports:
       - '80:80'
       - '443:443'
     volumes:
-      - './letsencrypt:/letsencrypt'
+      #- './letsencrypt:/letsencrypt'
       - '/var/run/docker.sock:/var/run/docker.sock:ro'
