@@ -21,6 +21,7 @@ services:
     environment:
       NODE_ENV: production
       INSECURE_USE_HTTP: 'true'
+      TZ: Europe/Moscou
       MONGO_CONNECTION: mongodb://mongo:27017/ns
       API_SECRET: qwertyuiopas
       
@@ -32,7 +33,10 @@ services:
       - '--providers.docker=true'
       - '--providers.docker.exposedbydefault=false'
       - '--entrypoints.web.address=:80'
+      - '--entrypoints.web.http.redirections.entrypoint.to=websecure'
+      - '--entrypoints.websecure.address=:443'
     ports:
       - '80:80'
+      - '443:443'
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock:ro'
