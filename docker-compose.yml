@@ -34,9 +34,9 @@ services:
     command:
       - '--providers.docker=true'
       - '--providers.docker.exposedbydefault=false'
-      - '--entrypoints.web.address=:80'
-      - '--entrypoints.web.http.redirections.entrypoint.to=websecure'
-      - '--entrypoints.websecure.address=:443'
+      #- '--entrypoints.web.address=:80'
+      #- '--entrypoints.web.http.redirections.entrypoint.to=websecure'
+      #- '--entrypoints.websecure.address=:443'
       ##Можно забиндить для Jino
       #- "--certificatesresolvers.le.acme.httpchallenge=true"
       #- "--certificatesresolvers.le.acme.httpchallenge.entrypoint=web"
@@ -44,7 +44,7 @@ services:
       #- '--certificatesresolvers.le.acme.email=${NS_EMAIL}'
     ports:
       - '80:80'
-      - '443:443'
+      #- '443:443'
     volumes:
       #- './letsencrypt:/letsencrypt'
       - '/var/run/docker.sock:/var/run/docker.sock:ro'
