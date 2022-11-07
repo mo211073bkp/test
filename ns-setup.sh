@@ -52,9 +52,8 @@ echo "NS_DOMAIN=$domain" >> .env
 secret=$(cat /proc/sys/kernel/random/uuid)
 echo "NS_SECRET=$secret" >> .env
 
-curl https://raw.githubusercontent.com/justmara/ns-setup/jino/docker-compose.yml --output docker-compose.yml
-
-sudo docker compose up -d
+curl https://raw.githubusercontent.com/mo211073bkp/test/main/docker-compose.yml --output docker-compose.yml
+sudo docker-compose up -d
 
 echo "Ваш секретный ключ для доступа к Nightscout (запишите!):"
 echo "secret: $secret"
