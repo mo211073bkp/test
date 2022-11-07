@@ -31,7 +31,7 @@ while [[ ! "$domain" =~ ^([a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-
   read domain
 done
 
-echo "Ваш Nightscout будет зпрегистрирован по адресу (проверьте!):"
+echo -e "$GREEN Ваш Nightscout будет зпрегистрирован по адресу (проверьте!): $NORMAL"
 echo "domain: $domain"
 read -p "Доменное имя введено без ошибок? (Нажмите [y/Y] для выполнения)"$'\n'  -n 1 -r
 echo -e "\n"
